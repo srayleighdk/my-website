@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Breadcrumb, Button, Modal, Dropdown } from "flowbite-react";
 import { useRouter } from "next/navigation";
+import CardProduct from "../components/CardProduct/CardProduct";
 import {
   HiHome,
   HiFilter,
@@ -46,6 +47,7 @@ export default function Products() {
           </Button.Group>
         </div>
       </div>
+      <CardProduct />
     </div>
   );
 }

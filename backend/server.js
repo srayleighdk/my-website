@@ -7,6 +7,7 @@ require("dotenv").config;
 
 // Routes
 const productRoutes = require("./routes/products");
+const authRouter = require("./routes/auth");
 
 // Create anew instance of the Express application
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // Define route handlers for products
 app.use("/products", productRoutes);
+app.use(authRouter);
 // Define a route handler for the root path
 app.get("/", (req, res) => {
   res.send("Hello from the backend! Test");
