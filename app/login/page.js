@@ -2,7 +2,13 @@
 import { TextInput, Button, Checkbox, Label } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { setCookie, parseCookies } from "nookies";
 import iXanhApi from "../api/axios";
+
+function setToken(token) {
+  localStorage.setItem("token", token);
+}
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,15 +16,25 @@ export default function Login() {
   const router = useRouter();
 
   const handleSubmit = async (e) => {
-    e.prevenDefault();
+    e.preventDefault();
     try {
       const res = await iXanhApi.post("/api/auth/login", {
         email,
         password,
       });
+      const { token } = res.data;
+      console.log(res.data.message);
+      //setToken(token);
+      setCookie(null, 'token', token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+        sameSite: "none",
+        secure: true,
+      });
+      iXanhApi.defaults.headers.authorization = `Bearer ${token}`;
       router.push("/");
     } catch (err) {
-      setError(err.response.data.message);
+      setError(err.response?.data?.message || "An error occurred");
     }
   };
   return (

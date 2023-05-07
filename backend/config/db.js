@@ -1,17 +1,17 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize({
   dialect: "mysql",
+  dialectOptions: {
+  socketPath: "/run/mysqld/mysqld.sock",
+  },
   host: "localhost",
-  port: 5000,
+  port: 3306,
   username: "dbixanh",
   password: "0000",
   database: "dbixanh",
-  socketPath: "/run/mysqld/mysqld.sock",
 });
-
-module.exports = sequelize;
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -29,4 +29,4 @@ connection.connect((err) => {
   console.log("Connected to database!");
 });
 
-module.exports = connection;
+module.exports = {connection, sequelize};
