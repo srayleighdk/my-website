@@ -9,7 +9,7 @@ export default function Footer() {
       <section className="px-1">
         <h2 className="py-3 font-bold">Everything House Plants</h2>
         <p className="font-light text-sm">
-          We're your online houseplant destination. We offer a wide range of
+          Were your online houseplant destination. We offer a wide range of
           houseplants and accessories shipped directly from our (greem)house to
           yours!
         </p>
