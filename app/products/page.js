@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Breadcrumb, Button, Modal, Dropdown } from "flowbite-react";
 import { useRouter } from "next/navigation";
-import CardProduct from "../components/CardProduct/CardProduct";
 import Container from "../components/Container";
 import {
   HiHome,
