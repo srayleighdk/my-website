@@ -1,84 +1,139 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id             String        @id @default(auto()) @map("_id") @db.ObjectId
-  name           String?
-  email          String?       @unique
-  emailVerified  DateTime?
-  image          String?
-  hashedPassword String?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  favoriteIds    String[]      @db.ObjectId
-  accounts       Account[]
-  listings       Listing[]
-  reservations   Reservation[]
-}
-
-model Product {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  description String
-  price       Float
-  quantity    Int
-  images      String[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
+  id                String  @id @default(cuid())
+  userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.String
+  id_token          String? @db.Text
   session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
-model Listing {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  description   String
-  imageSrc      String
-  createdAt     DateTime      @default(now())
-  category      String
-  roomCount     Int
-  bathroomCount Int
-  guestCount    Int
-  locationValue String
-  userId        String        @db.ObjectId
-  price         Int
-  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  reservations  Reservation[]
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Reservation {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId     String   @db.ObjectId
-  listingId  String   @db.ObjectId
-  startDate  DateTime
-  endDate    DateTime
-  totalPrice Int
-  createdAt  DateTime @default(now())
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  hashedPassword String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+  Cart           Cart?
+  Order          Order?    @relation(fields: [orderId], references: [id])
+  orderId        Int?
+}
+
+model Customer {
+  id        Int     @id @default(autoincrement())
+  lastname  String
+  firstname String?
+  company   String?
+  phone     String
+  email     String
+  address   String
+  country   String
+  zipCode   String?
+  apartment String?
+  orders    Order[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Product {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  price       String
+  description String
+  images      Image[]
+  ProductItem ProductItem[]
+  OrderItem   OrderItem[]
+  CartItem    CartItem[]
+}
+
+model ProductItem {
+  id        Int        @id @default(autoincrement())
+  product   Product    @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
+  price     String
+  CartItem  CartItem[]
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  url       String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  orderDate   DateTime    @default(now())
+  totalAmount String
+  totalPrice  String
+  userId      String?
+  customerId  Int
+  customer    Customer    @relation(fields: [customerId], references: [id])
+  orderItems  OrderItem[]
+  User        User[]
+}
+
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+model OrderItem {
+  id       Int   @id @default(autoincrement())
+  quantity Int
+  price    Float
+  orderId  Int
+  order    Order @relation(fields: [orderId], references: [id])
+  productId Int product   Product @relation(fields: [productId], references: [id])
+}
+
+model Cart {
+  id        Int        @id @default(autoincrement())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id])
+  cartItems CartItem[]
+}
+
+model CartItem {
+  id            Int          @id @default(autoincrement())
+  quantity      Int
+  cartId        Int
+  cart          Cart         @relation(fields: [cartId], references: [id])
+  productId     Int
+  product       Product      @relation(fields: [productId], references: [id])
+  ProductItem   ProductItem? @relation(fields: [productItemId], references: [id])
+  productItemId Int?
 }

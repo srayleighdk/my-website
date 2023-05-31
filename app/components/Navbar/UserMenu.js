@@ -1,6 +1,6 @@
 "use client";
 
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import { useCallback, useState } from "react";
@@ -44,6 +44,14 @@ const UserMenu = ({ currentUser }) => {
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
           iXanh your home
+        </div>
+        <div className="relative">
+          <AiOutlineShoppingCart />
+          <span className="absolute inset-0 object-right-top">
+            <span className=" -mr-6 inline-flex items-center rounded-full border-2 border-white bg-yellow-500 px-2 py-1 text-[0.6rem] font-semibold leading-none text-white lg:-mt-1 ">
+              1
+            </span>
+          </span>
         </div>
         <div
           onClick={toggleOpen}

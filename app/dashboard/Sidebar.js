@@ -5,10 +5,16 @@ import {
   BsHouseFill,
   BsFillArchiveFill,
   BsFillInboxFill,
+  BsFillPatchPlusFill,
 } from "react-icons/bs";
 
 const items = [
   { label: "Dashboard", icon: BsHouseFill, href: "/dashboard" },
+  {
+    label: "Create Product",
+    icon: BsFillPatchPlusFill,
+    href: "/dashboard/CreateProduct",
+  },
   { label: "Setting", icon: BsFillArchiveFill, href: "/dashboard/settings" },
   { label: "Orders", icon: BsFillInboxFill, href: "/dashboard/orders" },
   { label: "Products", icon: BsFillInboxFill, href: "dashboard/products" },

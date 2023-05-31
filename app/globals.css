@@ -1,3 +1,290 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(222 190 72 / var(--tw-bg-opacity));
+}
+
+.grid-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .grid-container {
+    max-width: 772px;
+  }
+}
+@media (min-width: 1024px) {
+  .grid-container {
+    max-width: 934px;
+  }
+}
+@media (min-width: 1280px) {
+  .grid-container {
+    max-width: 1198px;
+  }
+}
+@media (min-width: 1536px) {
+  .grid-container {
+    max-width: 1242px;
+  }
+}
+@media (min-width: 1626px) {
+  .grid-container {
+    max-width: 1626px;
+  }
+}
+
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+@media (min-width: 1626px) {
+  .container {
+    max-width: 1626px;
+  }
+}
+.aspect-h-1 {
+  --tw-aspect-h: 1;
+}
+.aspect-h-120 {
+  --tw-aspect-h: 120;
+}
+.aspect-h-133 {
+  --tw-aspect-h: 133;
+}
+.aspect-h-305 {
+  --tw-aspect-h: 305;
+}
+.aspect-h-31 {
+  --tw-aspect-h: 31;
+}
+.aspect-h-493 {
+  --tw-aspect-h: 493;
+}
+.aspect-h-76 {
+  --tw-aspect-h: 76;
+}
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+.aspect-h-\[250\] {
+  --tw-aspect-h: 250;
+}
+.aspect-h-\[350\] {
+  --tw-aspect-h: 350;
+}
+.aspect-w-1 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 1;
+}
+.aspect-w-1 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-108 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 108;
+}
+.aspect-w-108 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 16;
+}
+.aspect-w-16 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-246 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 246;
+}
+.aspect-w-246 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-25 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 25;
+}
+.aspect-w-25 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-345 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 345;
+}
+.aspect-w-345 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-61 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 61;
+}
+.aspect-w-61 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-97 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 97;
+}
+.aspect-w-97 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.aspect-w-\[536\] {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 536;
+}
+.aspect-w-\[536\] > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h1 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+    line-height: 2.1rem;
+  }
+}
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 4rem;
+    line-height: 4.6rem;
+  }
+}
+h2 {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.85rem;
+  }
+}
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2.6rem;
+  }
+}
+h3 {
+  line-height: 2.6rem;
+}
+h3,
+h4 {
+  font-size: 1.75rem;
+}
+h4 {
+  line-height: 2.1rem;
+}
+h5 {
+  font-size: 1.5rem;
+  line-height: 1.85rem;
+}
+h6 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}

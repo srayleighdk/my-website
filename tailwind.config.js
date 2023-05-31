@@ -7,6 +7,9 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./app/components/*.{js,ts,jsx,tsx}",
   ],
+  corePlugins: {
+    aspectRatio: false,
+  },
   theme: {
     extend: {
       backgroundImage: {
@@ -20,5 +23,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("@tailwindcss/aspect-ratio"),
+    require("daisyui"),
+  ],
 };

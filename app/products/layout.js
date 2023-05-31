@@ -1,7 +1,5 @@
 import SidebarProducts from "./SidebarProducts";
-export default function DashboardLayout({
-  children, // will be a page or nested layout
-}) {
+export default async function DashboardLayout({ children }) {
   return (
     <section>
       {/* Include shared UI here e.g. a header or sidebar */}

@@ -38,7 +38,7 @@ export default function CarouselSlider() {
   return (
     <div
       className="bg-white
-      h-56 sm:h-64 xl:h-80 2xl:h-96"
+      h-56 sm:h-96 xl:h-[650px]"
     >
       <Carousel theme={theme} indicators={false}>
         <div
